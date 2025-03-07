@@ -5,14 +5,12 @@ import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.items
 import androidx.compose.material.icons.Icons
-import androidx.compose.material.icons.filled.ArrowBack
 import androidx.compose.material.icons.filled.MoreVert
 import androidx.compose.material3.*
 import androidx.compose.runtime.*
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
-import androidx.compose.ui.text.style.LineHeightStyle
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import androidx.navigation.NavHostController
@@ -41,11 +39,11 @@ fun CryptoScreen(navController: NavHostController, viewModel: CryptoViewModel) {
                     )
                 },
                 colors = TopAppBarDefaults.topAppBarColors(
-                    containerColor = Color.Blue,
-                    titleContentColor = Color.White,
+                    containerColor = MaterialTheme.colorScheme.primary,
+                    titleContentColor = MaterialTheme.colorScheme.onPrimary,
                 ),
                 actions = {
-                    IconButton(onClick = { /*showMenu = true*/ }) {
+                    IconButton(onClick = { showMenu = !showMenu }) {
                         Icon(
                             Icons.Default.MoreVert,
                             contentDescription = "More Options",
@@ -64,10 +62,10 @@ fun CryptoScreen(navController: NavHostController, viewModel: CryptoViewModel) {
                             }
                         )
                         DropdownMenuItem(
-                            text = { Text("Settings") },
+                            text = { Text("Calculator") },
                             onClick = {
                                 showMenu = false
-                                navController.navigate("settings")  // Dẫn đến Settings screen
+                                navController.navigate("calculator")  // Dẫn đến Calculator screen
                             }
                         )
                     }
@@ -108,15 +106,25 @@ fun CryptoScreen(navController: NavHostController, viewModel: CryptoViewModel) {
                 ) {
                     Button(
                         onClick = { viewModel.prevPage() },
-                        enabled = currentPage > 1
-                    ) {
-                        Text("Previous")
+                        enabled = currentPage > 1,
+
+                        colors = ButtonDefaults.buttonColors(
+                            containerColor = if (currentPage > 1) MaterialTheme.colorScheme.primary else Color.Gray,
+                            contentColor = MaterialTheme.colorScheme.onPrimary
+                        )
+                    ){
+                       Text("Previous")
                     }
 
-                    Text("Page $currentPage", style = MaterialTheme.typography.bodyMedium)
+                    Text("Page $currentPage", style = MaterialTheme.typography.bodyLarge)
 
                     Button(
-                        onClick = { viewModel.nextPage() }
+                        onClick = { viewModel.nextPage() },
+
+                        colors = ButtonDefaults.buttonColors(
+                            containerColor = MaterialTheme.colorScheme.primary,   // Màu nền của nút
+                            contentColor = MaterialTheme.colorScheme.onPrimary    // Màu chữ trên nút
+                        )
                     ) {
                         Text("Next")
                     }
@@ -124,8 +132,6 @@ fun CryptoScreen(navController: NavHostController, viewModel: CryptoViewModel) {
             }
         }
     }
-
-
 
 @Composable
 fun CryptoItem(crypto: Crypto) {
