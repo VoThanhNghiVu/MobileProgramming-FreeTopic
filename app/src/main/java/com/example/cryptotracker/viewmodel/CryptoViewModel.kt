@@ -37,11 +37,15 @@ class CryptoViewModel : ViewModel() {
             try {
                 val result = repository.getCryptoList(_currentPage.value, perPage)
 
-                if (result.isEmpty()) {
-                    _errorMessage.value = "No data available for page ${_currentPage.value}. \nPlease try again later."
-                } else {
-                    _cryptoList.value = result
-                    _errorMessage.value = null
+                if (result != null) { // Nếu không bị lỗi 429
+                    if (result.isNotEmpty()) {
+                        _cryptoList.value = result
+                        _errorMessage.value = null
+                    } else {
+                        _errorMessage.value = "No data available for page ${_currentPage.value}.\nPlease try again later."
+                    }
+                } else { // Error 429, result of CryptoRepository is null
+                    _errorMessage.value = "You've exceeded the request limit.\nPlease try again later."
                 }
             } catch (e: Exception) {
                 _errorMessage.value = "Failed to load data: ${e.message}"

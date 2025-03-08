@@ -33,7 +33,7 @@ fun CryptoScreen(navController: NavHostController, viewModel: CryptoViewModel) {
             TopAppBar(
                 title = {
                     Text(
-                        "Crypto Information Tracker",
+                        "Crypto Tracker App",
                         modifier = Modifier.fillMaxWidth(),
                         textAlign = TextAlign.Center
                     )
@@ -80,14 +80,13 @@ fun CryptoScreen(navController: NavHostController, viewModel: CryptoViewModel) {
             horizontalAlignment = Alignment.CenterHorizontally
         ) {
             if (isLoading) {
-                CircularProgressIndicator()
+                CircularProgressIndicator(modifier = Modifier.padding(16.dp))
             } else if (errorMessage != null) {
                 Text(
                     text = errorMessage ?: "",
                     color = Color.Red,
-                    //fontWeight = FontWeight.Bold,
                     style = MaterialTheme.typography.bodyLarge,
-                    modifier = Modifier.padding(48.dp)
+                    modifier = Modifier.padding(30.dp)
                 )
             } else {
                 LazyColumn(
@@ -138,7 +137,7 @@ fun CryptoItem(crypto: Crypto) {
     Card(
         colors = CardDefaults.cardColors(containerColor = Color(0xFF121212)),
         modifier = Modifier
-            .padding(horizontal = 48.dp, vertical = 4.dp)
+            .padding(horizontal = 50.dp, vertical = 4.dp)
             .fillMaxWidth()
     ) {
         Row(
@@ -150,9 +149,11 @@ fun CryptoItem(crypto: Crypto) {
             Image(
                 painter = rememberAsyncImagePainter(crypto.image),
                 contentDescription = crypto.name,
-                modifier = Modifier.size(50.dp)
+                modifier = Modifier
+                    .size(52.dp)
+                    .padding(8.dp)
             )
-            Spacer(Modifier.width(4.dp))
+            Spacer(Modifier.width(16.dp))
             Column {
                 Text(crypto.name, style = MaterialTheme.typography.titleMedium, color = Color.White)
                 Text("Price: $${crypto.current_price}", color = Color.Green)

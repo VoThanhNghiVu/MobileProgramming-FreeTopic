@@ -50,9 +50,16 @@ fun InfoScreen(navController: NavHostController) {
                 .padding(48.dp),
             horizontalAlignment = Alignment.CenterHorizontally
         ) {
-            Text("InfoScreen", style = MaterialTheme.typography.titleLarge)
+            Text("Info", style = MaterialTheme.typography.titleLarge)
             Spacer(modifier = Modifier.height(16.dp))
-            Text("This is the Info screen \nThis app's data source is from \nhttps://www.coingecko.com/", style = MaterialTheme.typography.bodyLarge, color = Color.Blue)
+            Text(
+                "\nThis is the Info screen.\n" +
+                        "\nThe data source of this application is available on the website https://www.coingecko.com \n" +
+                        "\nAccording to the document, the CoinGecko Demo API plan has a rate limit of 30 calls/min. In fact, you can only fetch up to 5 times in 1 minute.\n" +
+                        "\nWhen service is denied, you have to wait a few minutes before come back.\n" +
+                        "\nDeveloped by Vo Thanh Nghi Vu.",
+                style = MaterialTheme.typography.bodyLarge, color = Color.Blue
+            )
         }
     }
 }
