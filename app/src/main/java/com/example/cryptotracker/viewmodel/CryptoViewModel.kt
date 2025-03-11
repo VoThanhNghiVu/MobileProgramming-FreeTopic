@@ -37,7 +37,7 @@ class CryptoViewModel : ViewModel() {
             try {
                 val result = repository.getCryptoList(_currentPage.value, perPage)
 
-                if (result != null) { // Nếu không bị lỗi 429
+                if (result != null) { // not 429
                     if (result.isNotEmpty()) {
                         _cryptoList.value = result
                         _errorMessage.value = null

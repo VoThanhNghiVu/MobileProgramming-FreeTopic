@@ -38,7 +38,7 @@ fun Calculator(navController: NavHostController) {
     Scaffold(
         topBar = {
             TopAppBar(
-                title = { Text("Calculator") },
+                title = { Text("Back to Crypto Tracker") },
                 navigationIcon = {
                     IconButton(onClick = { navController.navigateUp() }) {
                         Icon(
@@ -61,7 +61,6 @@ fun Calculator(navController: NavHostController) {
                 .padding(bottom = paddingValues.calculateBottomPadding()),
             horizontalAlignment = Alignment.CenterHorizontally
         ) {
-            // Show the result
             Text(
                 text = result,
                 style = MaterialTheme.typography.titleLarge,
@@ -77,7 +76,7 @@ fun Calculator(navController: NavHostController) {
                 modifier = Modifier.fillMaxWidth().padding(50.dp)
             )
 
-            // Dãy nút bấm cho các phép toán
+            // nút bấm cho các phép toán
             Column(
                 horizontalAlignment = Alignment.CenterHorizontally,
                 verticalArrangement = Arrangement.spacedBy(8.dp)
@@ -109,6 +108,9 @@ fun Calculator(navController: NavHostController) {
                     CalculatorButton("+") { input = input.copy(text = input.text + "+") }
                 }
             }
+            Spacer(modifier = Modifier.height(50.dp))
+            Text("Calculator", style = MaterialTheme.typography.titleLarge)
+
         }
     }
 }

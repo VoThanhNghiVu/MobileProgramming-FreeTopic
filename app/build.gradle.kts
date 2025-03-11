@@ -54,11 +54,9 @@ dependencies {
     implementation(libs.androidx.navigation.runtime.ktx)
     implementation(libs.androidx.navigation.compose)
     implementation("com.squareup.retrofit2:retrofit:2.9.0") // Retrofit core
-    implementation("com.squareup.retrofit2:converter-gson:2.9.0") // Converter cho JSON
-    implementation("io.coil-kt:coil-compose:2.5.0") //thêm thư viện coil
-    implementation("net.objecthunter:exp4j:0.4.8") // thư viện tính toán exp4j
-    //implementation("com.google.firebase:firebase-bom:32.7.0") // Phiên bản mới nhất
-    //implementation("com.google.firebase:firebase-crashlytics-ktx") // Firebase Crashlytics
+    implementation("com.squareup.retrofit2:converter-gson:2.9.0") // Converter for JSON
+    implementation("io.coil-kt:coil-compose:2.5.0") //add coil library
+    implementation("net.objecthunter:exp4j:0.4.8") // exp4j calculation library
     testImplementation(libs.junit)
     androidTestImplementation(libs.androidx.junit)
     androidTestImplementation(libs.androidx.espresso.core)

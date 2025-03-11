@@ -58,14 +58,14 @@ fun CryptoScreen(navController: NavHostController, viewModel: CryptoViewModel) {
                             text = { Text("Info") },
                             onClick = {
                                 showMenu = false
-                                navController.navigate("info")  // Dẫn đến Info screen
+                                navController.navigate("info")  // Info screen
                             }
                         )
                         DropdownMenuItem(
                             text = { Text("Calculator") },
                             onClick = {
                                 showMenu = false
-                                navController.navigate("calculator")  // Dẫn đến Calculator screen
+                                navController.navigate("calculator")  // Calculator screen
                             }
                         )
                     }
@@ -121,8 +121,8 @@ fun CryptoScreen(navController: NavHostController, viewModel: CryptoViewModel) {
                         onClick = { viewModel.nextPage() },
 
                         colors = ButtonDefaults.buttonColors(
-                            containerColor = MaterialTheme.colorScheme.primary,   // Màu nền của nút
-                            contentColor = MaterialTheme.colorScheme.onPrimary    // Màu chữ trên nút
+                            containerColor = MaterialTheme.colorScheme.primary,
+                            contentColor = MaterialTheme.colorScheme.onPrimary
                         )
                     ) {
                         Text("Next")
